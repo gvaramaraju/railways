@@ -1,0 +1,63 @@
+<div class="container">
+  <h1>Add Train</h1>
+  <h6>All Fields are Mandatory</h6>
+  <form #trainForm="ngForm" (ngSubmit)="addTrain(trainForm)">
+    <div class="form-group">
+      <label for="trainId">Train Id</label>
+      <input type="text" name="trainId" ngModel class="form-control" id="trainId" required>
+    </div>
+
+    <div class="form-group">
+      <label for="trainName">Train Name</label>
+      <input type="text" name="trainName" ngModel class="form-control" id="trainName" required>
+    </div>
+    <div class="form-group">
+      <label for="sourceStation">Source Station</label>
+      <!-- <input type="text" name="sourceStation" ngModel class="form-control" id="sourceStation" required> -->
+      <select id="sourceStation" name="sourceStation"class="form-control"   ngModel>
+        <option  *ngFor="let station of stationOptions" [value]="station.code">
+          {{station.stationName}}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="destinationStation">Destination Station</label>
+      <!-- <input type="text" name="destinationStation" ngModel class="form-control" id="destinationStation" required> -->
+      <select class="form-control" id="destinationStation"  name="destinationStation"  ngModel>
+          <option   *ngFor="let station of stationOptions" [value]="station.code">
+            {{station.stationName}}
+          </option>
+        </select>
+    </div>
+    <div class="form-group">
+      <label for="startTime">Start Time</label>
+      <input type="text" name="startTime" ngModel class="form-control" id="startTime" required>
+    </div>
+    <div class="form-group">
+      <label for="endTime">End Time</label>
+      <input type="text" name="endTime" ngModel class="form-control" id="endTime" required>
+    </div>
+    <div class="form-group">
+      <label for="trainType">Train Type</label>
+      <input type="text" name="trainType" ngModel class="form-control" id="trainType" required>
+    </div>
+    <button type="addTrain" class="btn btn-success">Add Train</button>
+    {{error}}
+  </form>
+</div>
+<div class="container">
+  <h1>Add Station</h1>
+  <h6>All Fields are Mandatory</h6>
+  <form #addStationForm="ngForm" (ngSubmit)="addStation(addStationForm)">
+    <div class="form-group">
+      <label for="code">Station Code</label>
+      <input type="text" name="code" ngModel class="form-control" id="code" required>
+    </div>
+    <div class="form-group">
+      <label for="stationName">Station Name</label>
+      <input type="text" name="stationName" ngModel class="form-control" id="stationName" required>
+    </div>
+    <button type="addStation" class="btn btn-success">Add Station</button>
+  </form>
+</div>
